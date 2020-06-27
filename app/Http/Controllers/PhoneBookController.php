@@ -15,21 +15,19 @@ class PhoneBookController extends Controller
     public function index()
     {
         //
+        //
+
         $clients = "";
         try {
             $response = Http::get(config('my.url_api'));
-            if ($response->successful()) {
-                $clients = json_decode($response->json());
-            } else {
-                $path = storage_path() . "/json/" . config('my.file');
-                $clients = json_decode(file_get_contents($path));
-            }
+            $clients = json_decode($response->json());
         } catch (\Exception $e) {
             Log::channel('customlog')->info(__LINE__ . ' - ' . __FILE__ . ' error in open file ' . "-" . $e->getMessage());
+            $path = storage_path() . "/json/" . config('my.file');
+            $clients = json_decode(file_get_contents($path));
         }
 
-        var_dump($clients);
-        die();
+
 
         $clients = $this->paginate($clients);
 
