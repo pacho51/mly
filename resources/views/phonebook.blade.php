@@ -20,6 +20,7 @@
                     <div class="p-2"><img src={{secure_asset('images/user-male.png')}} alt="user" width="50" class="rounded-circle"></div>
                     <div class="comment-text w-100">
                     <h6 class="font-medium">{{$client->name}}</h6> <span class="m-b-15 d-block">{{$client->email}} </span>
+                    <span class="m-b-15 d-block">{{$client->address->street}} {{$client->address->suite}}, {{$client->address->city}}</span>
                         <div class="comment-footer">
                             <button type="button" class="btn btn-cyan btn-sm">עריכה</button>
 
